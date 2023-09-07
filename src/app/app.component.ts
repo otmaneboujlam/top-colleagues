@@ -11,6 +11,6 @@ export class AppComponent {
   colleague : Colleague = {
     pseudo : "Messi",
     score : 0,
-    photo : "https://cdn.openphoto.net/volumes/sizes/mike/29619/2.jpg"
+    photo : new URL("https://cdn.openphoto.net/volumes/sizes/mike/29619/2.jpg")
   }
 }

@@ -1,4 +1,4 @@
-import { Component , Input} from '@angular/core';
+import { Component , EventEmitter, Input, Output} from '@angular/core';
 import { Colleague } from 'src/app/models/colleague';
 
 @Component({
@@ -10,4 +10,10 @@ export class ColleagueComponent {
 
   @Input() colleague! : Colleague;
 
+  traiter(val: number) {
+    if(val===0)
+      this.colleague.score++;
+    else 
+      this.colleague.score--;
+  }
 }
