@@ -2,7 +2,7 @@
     <img class="card-img-top p-3 text-center" style="height: 14rem;" src="{{colleague.photo}}" alt="">
     <div class="card-body p-3 text-center">
       <h5 class="card-title">{{colleague.pseudo | uppercase}}</h5>
-      <p class="card-text mb-2">{{colleague.score}}</p>
+      <p class="card-text mb-2">{{colleague.score | score}}</p>
       <tc-like-hate [score] = colleague.score (change)="traiter($event)"></tc-like-hate>
     </div>
 </div>

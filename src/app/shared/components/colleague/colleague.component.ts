@@ -1,5 +1,6 @@
 import { Component , EventEmitter, Input, Output} from '@angular/core';
 import { Colleague } from 'src/app/models/colleague';
+import { ScorePipe } from '../../pipes/score.pipe';
 
 @Component({
   selector: 'tc-colleague',
