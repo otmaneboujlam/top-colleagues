@@ -12,8 +12,8 @@ export class ColleagueComponent {
 
   traiter(val: number) {
     if(val===0)
-      this.colleague.score++;
+      this.colleague.score = this.colleague.score + 100;
     else 
-      this.colleague.score--;
+      this.colleague.score = this.colleague.score - 200;
   }
 }
