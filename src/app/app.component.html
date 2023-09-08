@@ -1,2 +1,5 @@
 <h1 class="text-center m-2">App Top Colleagues</h1>
-<tc-colleague-list [colleagues] = colleagues></tc-colleague-list>
+<div class="row">
+    <tc-colleague-list class="col-md-8" [colleagues] = colleagues (change)="traiter($event)"></tc-colleague-list>
+    <tc-voting-history class="col-md-4" [historyVotes] = historyVotes></tc-voting-history>
+</div>

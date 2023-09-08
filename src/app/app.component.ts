@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Colleague } from './models/colleague';
+import { Vote } from './models/vote';
+import { LikeHate } from './models/like-hate';
 
 @Component({
   selector: 'tc-root',
@@ -8,12 +10,7 @@ import { Colleague } from './models/colleague';
 })
 export class AppComponent {
   title = 'top-colleagues';
-  colleague : Colleague = {
-    pseudo : "Messi",
-    score : 0,
-    photo : new URL("https://cdn.openphoto.net/volumes/sizes/mike/29619/2.jpg")
-  }
-
+  
   colleagues : Colleague[] = [
     {
       pseudo : "Messi",
@@ -26,4 +23,10 @@ export class AppComponent {
       photo : new URL("https://images.rtl.fr/~c/1200v800/rtl/www/1209965-un-mouton-illustration.jpg")
     }
   ]
+
+  historyVotes : Vote[] = [];
+
+  traiter(colleagueVote : Vote) {
+    this.historyVotes.push(colleagueVote);
+  }
 }

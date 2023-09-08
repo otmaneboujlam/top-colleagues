@@ -1,0 +1,14 @@
+<ul>
+    <li *ngFor="let colleagueVote of historyVotes">
+        <img src="{{colleagueVote.colleague.photo}}" style="height: 6rem; width: auto;" alt="">
+        <div>
+            <h5>{{colleagueVote.colleague.pseudo}}</h5>
+            <p>{{colleagueVote.colleague.pseudo}} est
+                <ng-container *ngIf="colleagueVote.colleague.score >= 0"> aimé, </ng-container>
+                <ng-container *ngIf="colleagueVote.colleague.score < 0"> détesté, </ng-container>
+                il a un score de {{colleagueVote.colleague.score | score}}
+            </p>
+            <button class="btn btn-danger btn-sm">Supprimer</button>
+        </div>
+    </li>
+</ul>
