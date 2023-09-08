@@ -1,3 +1,4 @@
+<div class="m-3 text-center"><button class="btn btn-lg btn-info">Rafraichir la liste</button></div>
 <div class="d-flex flex-wrap justify-content-center m-3">
     <tc-colleague *ngFor="let colleague of colleagues" [colleague] = colleague (change)="traiter($event)"></tc-colleague>
 </div>

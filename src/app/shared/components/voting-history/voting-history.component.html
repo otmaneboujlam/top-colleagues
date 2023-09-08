@@ -1,4 +1,4 @@
-<h2>Historique</h2>
+<h2 class="m-3">Historique</h2>
 <ul class="list-unstyled m-3">
     <li class="d-flex" *ngFor="let colleagueVote of historyVotes">
         <img class="m-1" src="{{colleagueVote.colleague.photo}}" style="height: 6rem; width: 8rem;" alt="">
@@ -9,7 +9,7 @@
                 <ng-container *ngIf="colleagueVote.colleague.score < 0"> détesté, </ng-container>
                 il a un score de {{colleagueVote.colleague.score | score}}
             </p>
-            <button class="btn btn-danger btn-sm" (click)="remove(colleagueVote)">Supprimer</button>
+            <button class="btn btn-warning btn-sm" (click)="remove(colleagueVote)">Supprimer</button>
         </div>
     </li>
 </ul>
