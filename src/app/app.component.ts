@@ -29,4 +29,11 @@ export class AppComponent {
   traiter(colleagueVote : Vote) {
     this.historyVotes.unshift(colleagueVote);
   }
+
+  remove(colleagueVote : Vote){
+    const index = this.historyVotes.indexOf(colleagueVote);
+    if(index > -1){
+      this.historyVotes.splice(index,1);
+    }
+  }
 }

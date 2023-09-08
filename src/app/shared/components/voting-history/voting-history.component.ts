@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Vote } from 'src/app/models/vote';
 
 @Component({
@@ -9,5 +9,11 @@ import { Vote } from 'src/app/models/vote';
 export class VotingHistoryComponent {
 
   @Input() historyVotes! : Vote[];
+
+  @Output() change:EventEmitter<Vote> = new EventEmitter<Vote>();
+  
+  remove(colleagueVote : Vote) {
+    this.change.emit(colleagueVote);
+  }
 
 }
