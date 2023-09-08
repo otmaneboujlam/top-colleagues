@@ -27,6 +27,6 @@ export class AppComponent {
   historyVotes : Vote[] = [];
 
   traiter(colleagueVote : Vote) {
-    this.historyVotes.push(colleagueVote);
+    this.historyVotes.unshift(colleagueVote);
   }
 }
