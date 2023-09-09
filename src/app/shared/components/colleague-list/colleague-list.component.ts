@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Colleague } from 'src/app/models/colleague';
 import { Vote } from 'src/app/models/vote';
+import { ColleagueService } from 'src/app/providers/colleague.service';
 
 @Component({
   selector: 'tc-colleague-list',
@@ -9,11 +10,13 @@ import { Vote } from 'src/app/models/vote';
 })
 export class ColleagueListComponent {
 
-  @Input() colleagues! : Colleague[];
+  constructor(private colleagueService : ColleagueService){}
+
+  colleagues : Colleague[] = this.colleagueService.getColleagues();
 
   @Output() change:EventEmitter<Vote> = new EventEmitter<Vote>();
 
-  traiter(colleagueVote : Vote) {
+  traiterColleagueVote(colleagueVote : Vote) {
     this.change.emit(colleagueVote);
   }
 }

@@ -15,7 +15,7 @@ export class ColleagueComponent {
 
   @Output() change:EventEmitter<Vote> = new EventEmitter<Vote>();
 
-  traiter(val: number) {
+  traiterVote(val: number) {
     let colleagueVote : Vote  = {colleague : this.colleague,vote : val};
     this.change.emit(colleagueVote);
     if(val===0)
