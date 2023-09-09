@@ -15,10 +15,10 @@ export class ColleagueComponent {
 
   @Output() change:EventEmitter<Vote> = new EventEmitter<Vote>();
 
-  traiterVote(val: number) {
+  traiterVote(val: LikeHate) {
     let colleagueVote : Vote  = {colleague : this.colleague,vote : val};
     this.change.emit(colleagueVote);
-    if(val===0)
+    if(val===LikeHate.LIKE)
       this.colleague.score = this.colleague.score + 100;
     else 
       this.colleague.score = this.colleague.score - 200;

@@ -5,9 +5,9 @@
         <div class="d-flex flex-column justify-content-between m-1">
             <h5 class="m-0">{{colleagueVote.colleague.pseudo}}</h5>
             <p class="m-0">{{colleagueVote.colleague.pseudo}} est
-                <ng-container *ngIf="colleagueVote.colleague.score >= 0"> adoré, </ng-container>
-                <ng-container *ngIf="colleagueVote.colleague.score < 0"> détesté, </ng-container>
-                il a un score de {{colleagueVote.colleague.score | score}}
+                <ng-container *ngIf="colleagueVote.colleague.score >= 0"> adoré(e), </ng-container>
+                <ng-container *ngIf="colleagueVote.colleague.score < 0"> détesté(e), </ng-container>
+                il/elle a un score de {{colleagueVote.colleague.score | score}}
             </p>
             <button class="btn btn-warning btn-sm" (click)="remove(colleagueVote)">Supprimer</button>
         </div>
