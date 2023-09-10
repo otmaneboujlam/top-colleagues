@@ -31,4 +31,5 @@ export class VotingHistoryComponent {
   add(colleagueVote : Vote) {
     this.historyVotes.unshift(colleagueVote);
   }
+
 }

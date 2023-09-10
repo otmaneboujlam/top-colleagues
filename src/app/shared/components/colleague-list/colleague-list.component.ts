@@ -19,4 +19,7 @@ export class ColleagueListComponent {
   traiterColleagueVote(colleagueVote : Vote) {
     this.change.emit(colleagueVote);
   }
+
+  p: number = 1;
+
 }
