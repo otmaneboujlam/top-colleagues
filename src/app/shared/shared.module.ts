@@ -5,6 +5,7 @@ import { ColleagueComponent } from '../shared/components/colleague/colleague.com
 import { ColleagueListComponent } from '../shared/components/colleague-list/colleague-list.component';
 import { ScorePipe } from '../shared/pipes/score.pipe';
 import { VotingHistoryComponent } from '../shared/components/voting-history/voting-history.component';
+import { CounterComponent } from '../shared/components/counter/counter.component';
 
 
 
@@ -14,14 +15,16 @@ import { VotingHistoryComponent } from '../shared/components/voting-history/voti
     ColleagueComponent,
     ColleagueListComponent,
     ScorePipe,
-    VotingHistoryComponent
+    VotingHistoryComponent,
+    CounterComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
     ColleagueListComponent,
-    VotingHistoryComponent
+    VotingHistoryComponent,
+    CounterComponent
   ]
 })
 export class SharedModule { }
