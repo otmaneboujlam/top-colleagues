@@ -9,16 +9,24 @@ import { CounterService } from 'src/app/providers/counter.service';
   styleUrls: ['./counter.component.scss']
 })
 export class CounterComponent implements OnInit, OnDestroy {
-
-  likeHate : LikeHate[] = [];
   
+  like : LikeHate[] = [];
+  hate : LikeHate[] = [];
+
   subscription!: Subscription
 
   constructor(private counterService : CounterService){}
 
   ngOnInit(){
     this.counterService.abonner().subscribe({
-      next: (l: LikeHate) => this.likeHate.push(l)
+      next: (l: LikeHate) => {
+      if(l===LikeHate.LIKE){
+        this.like.push(l)
+      }
+      else {
+        this.hate.push(l)
+      }  
+      }
     })
   }
 
