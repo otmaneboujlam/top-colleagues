@@ -1,6 +1,6 @@
 <h2 class="m-3">Historique</h2>
 <ul class="list-unstyled m-3">
-    <li class="d-flex" *ngFor="let colleagueVote of historyVotes">
+    <li class="d-flex" *ngFor="let colleagueVote of historyVotes.slice(0, 10)">
         <img class="m-1" src="{{colleagueVote.colleague.photo}}" style="height: 6rem; width: 8rem;" alt="">
         <div class="d-flex flex-column justify-content-between m-1">
             <h5 class="m-0">{{colleagueVote.colleague.pseudo}}</h5>
