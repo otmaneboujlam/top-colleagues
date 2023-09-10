@@ -1,9 +1,9 @@
 <h2 class="m-3">Historique</h2>
 <ul class="list-unstyled m-3">
     <li class="d-flex" *ngFor="let colleagueVote of historyVotes.slice(0, 10)">
-        <img class="m-1" src="{{colleagueVote.colleague.photo}}" style="height: 6rem; width: 8rem;" alt="">
+        <img class="m-1" src="{{colleagueVote.colleague.photo}}" style="height: 5rem; width: 5rem;" alt="">
         <div class="d-flex flex-column justify-content-between m-1">
-            <h5 class="m-0">{{colleagueVote.colleague.pseudo}}</h5>
+            <h6 class="m-0">{{colleagueVote.colleague.pseudo}}</h6>
             <p class="m-0">{{colleagueVote.colleague.pseudo}} est
                 <ng-container *ngIf="colleagueVote.colleague.score >= 0"> adoré(e), </ng-container>
                 <ng-container *ngIf="colleagueVote.colleague.score < 0"> détesté(e), </ng-container>

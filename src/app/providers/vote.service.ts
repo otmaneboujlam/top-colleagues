@@ -9,20 +9,9 @@ import { Colleague } from '../models/colleague';
 })
 export class VoteService {
 
-  constructor(private colleagueService : ColleagueService) { }
+  constructor() { }
 
-  colleagues : Colleague[] = this.colleagueService.getColleagues();
-
-  historyVotes : Vote[] = [
-     {
-      colleague : this.colleagues[0],
-      vote : LikeHate.HATE
-     },
-     {
-      colleague : this.colleagues[1],
-      vote : LikeHate.LIKE
-     }
-  ];
+  historyVotes : Vote[] = [];
 
   getHistoryVotes = () => {
     return this.historyVotes;
