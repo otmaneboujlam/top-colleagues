@@ -1,15 +1,20 @@
-<h2 class="m-3">Historique</h2>
+<h2 class="mx-3 my-0 p-1">Historique</h2>
 <ul class="list-unstyled m-3">
-    <li class="d-flex" *ngFor="let colleagueVote of historyVotes.slice(0, 10)">
-        <img class="m-1" src="{{colleagueVote.colleague.photo}}" style="height: 5rem; width: 5rem;" alt="">
-        <div class="d-flex flex-column justify-content-between m-1">
-            <h6 class="m-0">{{colleagueVote.colleague.pseudo}}</h6>
-            <p class="m-0">{{colleagueVote.colleague.pseudo}} est
-                <ng-container *ngIf="colleagueVote.colleague.score >= 0"> adoré(e), </ng-container>
-                <ng-container *ngIf="colleagueVote.colleague.score < 0"> détesté(e), </ng-container>
-                il/elle a un score de {{colleagueVote.colleague.score | score}}
-            </p>
-            <button class="btn btn-warning btn-sm" (click)="remove(colleagueVote)">Supprimer</button>
+    <li class="border border-secondary rounded p-1 m-1" *ngFor="let colleagueVote of historyVotes.slice(0, 10)">
+        <div class="d-flex">
+            <img class="m-1" src="{{colleagueVote.colleague.photo}}" style="height: 5rem; width: 5rem;" alt="">
+            <div class="d-flex flex-column justify-content-around m-1">
+                <p class="m-0">{{colleagueVote.colleague.pseudo}} a reçu un
+                    <ng-container *ngIf="colleagueVote.vote === 0"> LIKE</ng-container>
+                    <ng-container *ngIf="colleagueVote.vote === 1"> DISLIKE</ng-container>
+                </p>
+                <p class="m-0">{{colleagueVote.colleague.pseudo}} est
+                    <ng-container *ngIf="colleagueVote.colleague.score >= 0"> adoré(e), </ng-container>
+                    <ng-container *ngIf="colleagueVote.colleague.score < 0"> détesté(e), </ng-container>
+                    il/elle a un score de {{colleagueVote.colleague.score | score}}
+                </p>
+            </div>
         </div>
+        <button class="btn btn-warning btn-sm w-100" (click)="remove(colleagueVote)">Supprimer</button>
     </li>
 </ul>

@@ -20,11 +20,11 @@ export class ColleagueComponent {
 
   traiterVote(val: LikeHate) {
     this.counterService.publier(val);
-    let colleagueVote : Vote  = {colleague : this.colleague,vote : val};
-    this.change.emit(colleagueVote);
     if(val===LikeHate.LIKE)
       this.colleague.score = this.colleague.score + 100;
     else 
       this.colleague.score = this.colleague.score - 200;
+    let colleagueVote : Vote  = {colleague : {pseudo : this.colleague.pseudo, score : this.colleague.score, photo : this.colleague.photo},vote : val};
+    this.change.emit(colleagueVote);
   }
 }
