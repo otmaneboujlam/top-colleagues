@@ -27,6 +27,5 @@ export class ColleagueComponent {
       .subscribe({
         next: (value : any) => this.colleague.score = value.score
     })
-    this.counterService.publier(val);
   }
 }

@@ -21,6 +21,14 @@ export class ColleagueListComponent {
       })
   }
 
+  updateListColleague(){
+    this.colleagues = [];
+    this.colleagueService.getColleaguesFromAPI()
+      .subscribe({
+        next: colleagues => colleagues.forEach(colleague => this.colleagues.push(colleague))
+      })
+  }
+
   @Output() change:EventEmitter<boolean> = new EventEmitter<boolean>();
 
   traiterColleagueVote(colleagueVote : boolean) {

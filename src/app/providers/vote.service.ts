@@ -6,13 +6,15 @@ import { Colleague } from '../models/colleague';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { VoteAPI } from '../models/vote-api';
 import { VoteToAPI } from '../models/vote-to-api';
+import { tap } from 'rxjs';
+import { CounterService } from './counter.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VoteService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private counterService : CounterService) {}
 
   historyVotes : Vote[] = [];
 
@@ -25,6 +27,11 @@ export class VoteService {
       headers: new HttpHeaders({
       "Content-Type": "application/json"
       })
-    });
+    }).pipe(tap(()=>{
+      if(voteToAPI.like_hate === "LIKE")
+        this.counterService.publier(LikeHate.LIKE)
+      else 
+      this.counterService.publier(LikeHate.HATE)
+    }));
   }
 }
