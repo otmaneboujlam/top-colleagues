@@ -1,5 +1,9 @@
-import { Component, EventEmitter, Input, Output, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output, SimpleChange, SimpleChanges } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { LikeHate } from 'src/app/models/like-hate';
 import { Vote } from 'src/app/models/vote';
+import { VoteAPI } from 'src/app/models/vote-api';
+import { CounterService } from 'src/app/providers/counter.service';
 import { VoteService } from 'src/app/providers/vote.service';
 
 @Component({
@@ -7,13 +11,49 @@ import { VoteService } from 'src/app/providers/vote.service';
   templateUrl: './voting-history.component.html',
   styleUrls: ['./voting-history.component.scss']
 })
-export class VotingHistoryComponent {
+export class VotingHistoryComponent implements OnDestroy{
 
-  constructor(private voteService : VoteService){}
+  constructor(private voteService : VoteService, private counterService : CounterService){}
 
-  historyVotes : Vote[] = this.voteService.getHistoryVotes();
+  subscription!: Subscription
 
-  @Input() voteToAdd! : Vote;
+  historyVotes : Vote[] =[];
+
+  ngOnInit(){
+    this.counterService.abonner().subscribe({
+      next: (l: LikeHate) => {
+        this.historyVotes = [];
+        this.voteService.getHistoryVotesFromAPI()
+          .subscribe({
+            next: (votes: VoteAPI[]) => votes.forEach((vote: VoteAPI) => {
+            let tempLikeHate : LikeHate;
+            if(vote.like_hate === "LIKE"){
+              tempLikeHate = LikeHate.LIKE;
+            } 
+            else{
+              tempLikeHate = LikeHate.HATE;
+            }
+            let tempVote : Vote = {colleague : {pseudo : vote.colleague.pseudo , score : vote.score , photo : vote.colleague.photo}, vote : tempLikeHate};
+            this.historyVotes.push(tempVote);
+            })
+          });
+      }
+    })
+    this.voteService.getHistoryVotesFromAPI()
+    .subscribe({
+      next: (votes: VoteAPI[]) => votes.forEach((vote: VoteAPI) => {
+        let tempLikeHate : LikeHate;
+        if(vote.like_hate === "LIKE"){
+          tempLikeHate = LikeHate.LIKE;
+        } 
+        else{
+          tempLikeHate = LikeHate.HATE;
+        }
+        let tempVote : Vote = {colleague : {pseudo : vote.colleague.pseudo , score : vote.score , photo : vote.colleague.photo}, vote : tempLikeHate};
+        this.historyVotes.push(tempVote);
+    })
+  });
+  }
 
   remove(colleagueVote : Vote){
     const index = this.historyVotes.indexOf(colleagueVote);
@@ -22,14 +62,7 @@ export class VotingHistoryComponent {
     }
   }
 
-  ngOnChanges(changes: SimpleChanges){
-    if( this.voteToAdd && changes['voteToAdd']){
-      this.add(this.voteToAdd);
-    }
+  ngOnDestroy(){
+    this.subscription.unsubscribe()
   }
-
-  add(colleagueVote : Vote) {
-    this.historyVotes.unshift(colleagueVote);
-  }
-
 }

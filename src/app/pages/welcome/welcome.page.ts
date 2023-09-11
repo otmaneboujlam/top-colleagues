@@ -11,9 +11,9 @@ import { VoteService } from 'src/app/providers/vote.service';
 })
 export class WelcomePage {
 
-  voteToAdd! : Vote;
+  voteToAdd! : boolean;
 
-  add(colleagueVote : Vote) {
+  add(colleagueVote : boolean) {
     this.voteToAdd = colleagueVote;
   }
 }

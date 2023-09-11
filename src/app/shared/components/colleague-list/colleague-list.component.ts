@@ -12,11 +12,18 @@ export class ColleagueListComponent {
 
   constructor(private colleagueService : ColleagueService){}
 
-  colleagues : Colleague[] = this.colleagueService.getColleagues();
+  colleagues : Colleague[] = [];
+  
+  ngOnInit(){
+    this.colleagueService.getColleaguesFromAPI()
+      .subscribe({
+        next: colleagues => colleagues.forEach(colleague => this.colleagues.push(colleague))
+      })
+  }
 
-  @Output() change:EventEmitter<Vote> = new EventEmitter<Vote>();
+  @Output() change:EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  traiterColleagueVote(colleagueVote : Vote) {
+  traiterColleagueVote(colleagueVote : boolean) {
     this.change.emit(colleagueVote);
   }
 

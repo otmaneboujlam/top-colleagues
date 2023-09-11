@@ -3,5 +3,5 @@
     <button class="btn btn-md btn-info">Rafraichir la liste</button>
 </div>
 <div class="d-flex flex-wrap justify-content-center mx-3">
-    <tc-colleague *ngFor="let colleague of colleagues | paginate: { itemsPerPage: 9, currentPage: p }" [colleague] = colleague (change)="traiterColleagueVote($event)"></tc-colleague>
+    <tc-colleague *ngFor="let colleague of colleagues | paginate: { itemsPerPage: 9, currentPage: p }" [colleague] = colleague></tc-colleague>
 </div>

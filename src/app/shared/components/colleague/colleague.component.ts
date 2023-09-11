@@ -4,6 +4,7 @@ import { ScorePipe } from '../../pipes/score.pipe';
 import { Vote } from 'src/app/models/vote';
 import { LikeHate } from 'src/app/models/like-hate';
 import { CounterService } from 'src/app/providers/counter.service';
+import { VoteService } from 'src/app/providers/vote.service';
 
 @Component({
   selector: 'tc-colleague',
@@ -12,19 +13,20 @@ import { CounterService } from 'src/app/providers/counter.service';
 })
 export class ColleagueComponent {
 
-  constructor(private counterService : CounterService){}
+  constructor(private counterService : CounterService, private voteService : VoteService){}
 
   @Input() colleague! : Colleague;
 
-  @Output() change:EventEmitter<Vote> = new EventEmitter<Vote>();
-
   traiterVote(val: LikeHate) {
-    this.counterService.publier(val);
+    let tempLikeHate : string;
     if(val===LikeHate.LIKE)
-      this.colleague.score = this.colleague.score + 100;
+      tempLikeHate = "LIKE";
     else 
-      this.colleague.score = this.colleague.score - 200;
-    let colleagueVote : Vote  = {colleague : {pseudo : this.colleague.pseudo, score : this.colleague.score, photo : this.colleague.photo},vote : val};
-    this.change.emit(colleagueVote);
+      tempLikeHate = "HATE";
+    this.voteService.sendVoteToAPI({pseudo : this.colleague.pseudo, like_hate : tempLikeHate})
+      .subscribe({
+        next: (value : any) => this.colleague.score = value.score
+    })
+    this.counterService.publier(val);
   }
 }
