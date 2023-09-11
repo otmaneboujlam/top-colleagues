@@ -7,12 +7,12 @@
     </div>
     <div class="form-group">
         <label for="nom">Nom</label>
-        <input name="nom" required minlength="2" #nomCtrl="ngModel" [(ngModel)]="createColleague.nom" type="text" class="form-control" id="nom">
+        <input name="nom" required minlength="2" #nomCtrl="ngModel" [(ngModel)]="createColleague.last" type="text" class="form-control" id="nom">
         <p class="m-0 p-1 text-danger" *ngIf="nomCtrl.dirty && nomCtrl.invalid">Nom invalide</p>
     </div>
     <div class="form-group">
         <label for="Prenom">Prenom</label>
-        <input name="prenom" required  minlength="2" #prenomCtrl="ngModel" [(ngModel)]="createColleague.prenom" type="text" class="form-control" id="prenom">
+        <input name="prenom" required  minlength="2" #prenomCtrl="ngModel" [(ngModel)]="createColleague.first" type="text" class="form-control" id="prenom">
         <p class="m-0 p-1 text-danger" *ngIf="prenomCtrl.dirty && prenomCtrl.invalid">Prenom invalide</p>
     </div>
     <div class="form-group">

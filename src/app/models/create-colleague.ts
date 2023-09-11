@@ -1,6 +1,7 @@
 export interface CreateColleague {
     pseudo : string;
-    nom : string;
-    prenom : string;
+    last : string;
+    first : string;
     photo : string;
+    score : number;
 }
