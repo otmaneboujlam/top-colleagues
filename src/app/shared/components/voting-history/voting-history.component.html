@@ -1,6 +1,9 @@
-<h2 class="mx-3 my-0 p-1">Historique</h2>
+<div class="mx-3 my-0 p-1 justify-content-center">
+    <h2 class="mx-3 my-0 p-1">Historique</h2>
+    <pagination-controls id="votingHistory" (pageChange)="p = $event"></pagination-controls>
+</div>
 <ul class="list-unstyled m-3">
-    <li class="border border-secondary rounded p-1 m-1" *ngFor="let colleagueVote of historyVotes.slice(0, 6)">
+    <li class="border border-secondary rounded p-1 m-1" *ngFor="let colleagueVote of historyVotes | paginate: { id: 'votingHistory', itemsPerPage: 6, currentPage: p }">
         <div class="d-flex">
             <img class="m-1" src="{{colleagueVote.colleague.photo}}" style="height: 5rem; width: 5rem;" alt="">
             <div class="d-flex flex-column justify-content-around m-1">

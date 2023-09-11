@@ -19,6 +19,8 @@ export class VotingHistoryComponent implements OnDestroy{
 
   historyVotes : Vote[] =[];
 
+  p : number = 1;
+
   ngOnInit(){
     this.counterService.abonner().subscribe({
       next: (l: LikeHate) => {
