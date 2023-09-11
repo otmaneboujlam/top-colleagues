@@ -9,6 +9,7 @@ import { CounterComponent } from '../shared/components/counter/counter.component
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CreateColleagueFormsComponent } from './components/create-colleague-forms/create-colleague-forms.component';
 import { FormsModule } from '@angular/forms';
+import { FirstLastValidatorDirective } from './validators/first-last-validator.directive';
 
 
 
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     ScorePipe,
     VotingHistoryComponent,
     CounterComponent,
-    CreateColleagueFormsComponent
+    CreateColleagueFormsComponent,
+    FirstLastValidatorDirective
   ],
   imports: [
     CommonModule,
