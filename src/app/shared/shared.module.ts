@@ -7,6 +7,8 @@ import { ScorePipe } from '../shared/pipes/score.pipe';
 import { VotingHistoryComponent } from '../shared/components/voting-history/voting-history.component';
 import { CounterComponent } from '../shared/components/counter/counter.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CreateColleagueFormsComponent } from './components/create-colleague-forms/create-colleague-forms.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -17,16 +19,19 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ColleagueListComponent,
     ScorePipe,
     VotingHistoryComponent,
-    CounterComponent
+    CounterComponent,
+    CreateColleagueFormsComponent
   ],
   imports: [
     CommonModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FormsModule
   ],
   exports: [
     ColleagueListComponent,
     VotingHistoryComponent,
-    CounterComponent
+    CounterComponent,
+    CreateColleagueFormsComponent
   ]
 })
 export class SharedModule { }

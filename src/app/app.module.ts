@@ -6,6 +6,7 @@ import { SharedModule } from './shared/shared.module';
 import { WelcomePage } from './pages/welcome/welcome.page';
 import { WelcomeModule } from './pages/welcome/welcome.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CreateColleagueModule } from './pages/create-colleague/create-colleague.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     SharedModule,
     WelcomeModule,
-    HttpClientModule
+    HttpClientModule,
+    CreateColleagueModule
   ],
   providers: [],
   bootstrap: [AppComponent]
