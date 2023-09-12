@@ -12,21 +12,29 @@ export class CreateColleagueFormsComponent {
 
   constructor(private colleagueService : ColleagueService){}
 
+  created : boolean = false;
+
   createColleague : CreateColleague = {
     pseudo : "",
     last : "" ,
     first : "" ,
-    photo : "https://randomuser.me/api/portraits/men/81.jpg",
+    photo : "",
     score : 0
   };
 
   ajouter(){
     console.log(this.createColleague);
     this.colleagueService.createColleague(this.createColleague);
+    this.showHideMsg();
   }
 
   reset(form : NgForm){
     form.resetForm();
+  }
+
+  showHideMsg(){
+    this.created = true;
+    setTimeout(()=> {this.created=false},3000);
   }
 
 }

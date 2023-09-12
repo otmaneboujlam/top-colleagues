@@ -15,7 +15,7 @@ export class PseudoValidatorDirective implements AsyncValidator {
     const pseudo : string = control.value.pseudo;
     return this.colleagueService.getColleagueDetail(pseudo).pipe(
       map(()=>{
-        return {pseudoExist : "Pseudo existe déjà"}
+        return {pseudoExist : "Pseudo "+pseudo+" existe déjà"}
       }),
       catchError(()=>of(null))
     )

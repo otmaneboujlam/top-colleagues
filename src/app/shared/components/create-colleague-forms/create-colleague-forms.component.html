@@ -1,4 +1,5 @@
-<h2 class="m-3">Formulaire</h2>
+<h2 class="m-3">Formulaire de création de collègue</h2>
+<p *ngIf="created" role="alert" class="alert alert-success m-3 w-50">Collègue créé avec succès</p>
 <form tcFirstLastValidator tcPseudoValidator (ngSubmit)="reset(formCtrl)" #formCtrl="ngForm" class="m-3 w-50">
     <div class="form-group">
         <label for="pseudo">Pseudo</label>
@@ -9,19 +10,19 @@
     <div class="form-group">
         <label for="nom">Nom</label>
         <input name="nom" required minlength="2" #nomCtrl="ngModel" [(ngModel)]="createColleague.last" type="text" class="form-control" id="nom">
-        <p class="m-0 p-1 text-danger" *ngIf="nomCtrl.dirty && nomCtrl.invalid">Nom invalide</p>
+        <p class="m-0 p-1 text-danger" *ngIf="nomCtrl.dirty && nomCtrl.invalid">Le nom doit avoir au moins 2 caractères</p>
         <p class="m-0 p-1 text-danger" *ngIf="nomCtrl.dirty && formCtrl.errors && formCtrl.errors['firstLast']">{{formCtrl.errors['firstLast']}}</p>
     </div>
     <div class="form-group">
         <label for="prenom">Prenom</label>
         <input name="prenom" required  minlength="2" #prenomCtrl="ngModel" [(ngModel)]="createColleague.first" type="text" class="form-control" id="prenom">
-        <p class="m-0 p-1 text-danger" *ngIf="prenomCtrl.dirty && prenomCtrl.invalid">Prenom invalide</p>
+        <p class="m-0 p-1 text-danger" *ngIf="prenomCtrl.dirty && prenomCtrl.invalid">Le prenom doit avoir au moins 2 caractères</p>
         <p class="m-0 p-1 text-danger" *ngIf="prenomCtrl.dirty && formCtrl.errors && formCtrl.errors['firstLast']">{{formCtrl.errors['firstLast']}}</p>
     </div>
     <div class="form-group">
         <label for="photoURL">Photo URL</label>
         <input name="photo" pattern="^https?://\S*" required #photoCtrl="ngModel" [(ngModel)]="createColleague.photo" type="text" class="form-control" id="photoURL">
-        <p class="m-0 p-1 text-danger" *ngIf="photoCtrl.dirty && photoCtrl.invalid">URL invalide</p>
+        <p class="m-0 p-1 text-danger" *ngIf="photoCtrl.dirty && photoCtrl.invalid">L'URL doit commencer par http:// ou https://</p>
     </div>
     <button [disabled]="formCtrl.invalid" (click)="ajouter()" class="mt-2 btn btn-primary">Ajouter</button>
 </form>
