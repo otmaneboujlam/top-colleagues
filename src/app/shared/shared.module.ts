@@ -11,6 +11,7 @@ import { CreateColleagueFormsComponent } from './components/create-colleague-for
 import { FormsModule } from '@angular/forms';
 import { FirstLastValidatorDirective } from './validators/first-last-validator.directive';
 import { PseudoValidatorDirective } from './validators/pseudo-validator.directive';
+import { CreateColleagueReactiveFormsComponent } from './components/create-colleague-reactive-forms/create-colleague-reactive-forms.component';
 
 
 
@@ -24,7 +25,8 @@ import { PseudoValidatorDirective } from './validators/pseudo-validator.directiv
     CounterComponent,
     CreateColleagueFormsComponent,
     FirstLastValidatorDirective,
-    PseudoValidatorDirective
+    PseudoValidatorDirective,
+    CreateColleagueReactiveFormsComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { PseudoValidatorDirective } from './validators/pseudo-validator.directiv
     ColleagueListComponent,
     VotingHistoryComponent,
     CounterComponent,
-    CreateColleagueFormsComponent
+    CreateColleagueFormsComponent,
+    CreateColleagueReactiveFormsComponent
   ]
 })
 export class SharedModule { }
