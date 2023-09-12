@@ -9,16 +9,18 @@
         <label for="nom">Nom</label>
         <input name="nom" required minlength="2" #nomCtrl="ngModel" [(ngModel)]="createColleague.last" type="text" class="form-control" id="nom">
         <p class="m-0 p-1 text-danger" *ngIf="nomCtrl.dirty && nomCtrl.invalid">Nom invalide</p>
+        <p class="m-0 p-1 text-danger" *ngIf="nomCtrl.dirty && formCtrl.errors && formCtrl.errors['firstLast']">{{formCtrl.errors['firstLast']}}</p>
     </div>
     <div class="form-group">
         <label for="prenom">Prenom</label>
         <input name="prenom" required  minlength="2" #prenomCtrl="ngModel" [(ngModel)]="createColleague.first" type="text" class="form-control" id="prenom">
         <p class="m-0 p-1 text-danger" *ngIf="prenomCtrl.dirty && prenomCtrl.invalid">Prenom invalide</p>
+        <p class="m-0 p-1 text-danger" *ngIf="prenomCtrl.dirty && formCtrl.errors && formCtrl.errors['firstLast']">{{formCtrl.errors['firstLast']}}</p>
     </div>
     <div class="form-group">
         <label for="photoURL">Photo URL</label>
         <input name="photo" pattern="^https?://\S*" required #photoCtrl="ngModel" [(ngModel)]="createColleague.photo" type="text" class="form-control" id="photoURL">
         <p class="m-0 p-1 text-danger" *ngIf="photoCtrl.dirty && photoCtrl.invalid">URL invalide</p>
-    </div> 
+    </div>
     <button [disabled]="formCtrl.invalid" (click)="ajouter()" class="mt-2 btn btn-primary">Ajouter</button>
 </form>
