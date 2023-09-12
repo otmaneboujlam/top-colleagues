@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidator, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Observable, catchError, map, of } from 'rxjs';
 import { ColleagueService } from 'src/app/providers/colleague.service';
 
 @Component({
@@ -7,13 +8,21 @@ import { ColleagueService } from 'src/app/providers/colleague.service';
   templateUrl: './create-colleague-reactive-forms.component.html',
   styleUrls: ['./create-colleague-reactive-forms.component.scss']
 })
-export class CreateColleagueReactiveFormsComponent {
+export class CreateColleagueReactiveFormsComponent implements AsyncValidator{
 
   colleagueForm!: FormGroup;
 
+  created : boolean = false;
+
   constructor(private colleagueService : ColleagueService , private fb: FormBuilder){
     this.colleagueForm = this.fb.group({
-      pseudo: ['', [Validators.required]],
+      pseudo: [
+        '',
+        {
+          validators : [Validators.required],
+          asyncValidators : [this.validate.bind(this)],
+        }
+      ],
       first: ['', [Validators.required, Validators.minLength(2)]],
       last: ['', [Validators.required, Validators.minLength(2)]],
       photo: ['', [Validators.required, this.urlPatternValidator]],
@@ -22,6 +31,21 @@ export class CreateColleagueReactiveFormsComponent {
     {
       validators: [this.firstLastValidator]
     })
+  }
+
+  validate(control : AbstractControl): Observable<ValidationErrors | null> {
+    const pseudo : string = control.value;
+    return this.colleagueService.getColleagueDetail(pseudo).pipe(
+      map(()=>{
+        return {pseudoExist : "Pseudo "+pseudo+" existe déjà"}
+      }),
+      catchError(()=>of(null))
+    )
+  }
+
+  get pseudoErrors() {
+    const pseudoCtrl = this.colleagueForm.get('pseudo');
+    return pseudoCtrl?.errors
   }
 
   get pseudoErr() {
@@ -63,7 +87,7 @@ export class CreateColleagueReactiveFormsComponent {
 
   urlPatternValidator(control: AbstractControl): ValidationErrors | null {
     const urlPhoto : string = control.value;
-    if(urlPhoto.match("^https?://\S*") == null){
+    if(urlPhoto && urlPhoto.match("^https?://\S*") == null){
       return {urlPhoto : "L'URL doit commencer par http:// ou https://"}
     }
     return null;
@@ -79,5 +103,16 @@ export class CreateColleagueReactiveFormsComponent {
   ajouter(){
     console.log(this.colleagueForm.value);
     this.colleagueService.createColleague(this.colleagueForm.value);
+    this.showHideMsg();
+    this.reset();
+  }
+
+  reset(){
+    this.colleagueForm.reset();
+  }
+
+  showHideMsg(){
+    this.created = true;
+    setTimeout(()=> {this.created=false},3000);
   }
 }

@@ -1,9 +1,11 @@
 <h2 class="m-3">Formulaire de création de collègue</h2>
+<p *ngIf="created" role="alert" class="alert alert-success m-3 w-50">Collègue créé avec succès</p>
 <form [formGroup]="colleagueForm" class="m-3 w-50">
     <div class="form-group">
         <label for="pseudo">Pseudo</label>
         <input formControlName="pseudo" name="pseudo" type="text" class="form-control" id="pseudo">
         <p class="m-0 p-1 text-danger" *ngIf="pseudoErr">Pseudo invalide</p>
+        <p class="m-0 p-1 text-danger" *ngIf="pseudoErr && pseudoErrors && pseudoErrors['pseudoExist']">{{pseudoErrors['pseudoExist']}}</p>
     </div>
     <div class="form-group">
         <label for="last">Nom</label>
