@@ -8,7 +8,7 @@ import { VotingHistoryComponent } from '../shared/components/voting-history/voti
 import { CounterComponent } from '../shared/components/counter/counter.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CreateColleagueFormsComponent } from './components/create-colleague-forms/create-colleague-forms.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FirstLastValidatorDirective } from './validators/first-last-validator.directive';
 import { PseudoValidatorDirective } from './validators/pseudo-validator.directive';
 import { CreateColleagueReactiveFormsComponent } from './components/create-colleague-reactive-forms/create-colleague-reactive-forms.component';
@@ -31,7 +31,8 @@ import { CreateColleagueReactiveFormsComponent } from './components/create-colle
   imports: [
     CommonModule,
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     ColleagueListComponent,

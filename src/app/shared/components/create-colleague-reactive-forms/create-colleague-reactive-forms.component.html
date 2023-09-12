@@ -1,20 +1,26 @@
 <h2 class="m-3">Formulaire de création de collègue</h2>
-<form class="m-3 w-50">
+<form [formGroup]="colleagueForm" class="m-3 w-50">
     <div class="form-group">
         <label for="pseudo">Pseudo</label>
-        <input name="pseudo" type="text" class="form-control" id="pseudo">
+        <input formControlName="pseudo" name="pseudo" type="text" class="form-control" id="pseudo">
+        <p class="m-0 p-1 text-danger" *ngIf="pseudoErr">Pseudo invalide</p>
     </div>
     <div class="form-group">
-        <label for="nom">Nom</label>
-        <input name="nom" type="text" class="form-control" id="nom">
+        <label for="last">Nom</label>
+        <input formControlName="last" name="last" type="text" class="form-control" id="nom">
+        <p class="m-0 p-1 text-danger" *ngIf="nomErr">Le nom doit avoir au moins 2 caractères</p>
+        <p class="m-0 p-1 text-danger" *ngIf="firstLastErr && firstLastErrors && firstLastErrors['firstLast']">{{firstLastErrors['firstLast']}}</p>
     </div>
     <div class="form-group">
-        <label for="prenom">Prenom</label>
-        <input name="prenom" type="text" class="form-control" id="prenom">
+        <label for="first">Prenom</label>
+        <input formControlName="first" name="first" type="text" class="form-control" id="prenom">
+        <p class="m-0 p-1 text-danger" *ngIf="prenomErr">Le prenom doit avoir au moins 2 caractères</p>
+        <p class="m-0 p-1 text-danger" *ngIf="firstLastErr && firstLastErrors && firstLastErrors['firstLast']">{{firstLastErrors['firstLast']}}</p>
     </div>
     <div class="form-group">
         <label for="photoURL">Photo URL</label>
-        <input name="photo" type="text" class="form-control" id="photoURL">
+        <input formControlName="photo" name="photo" type="text" class="form-control" id="photoURL">
+        <p class="m-0 p-1 text-danger" *ngIf="photoErr && photoErrors && photoErrors['urlPhoto']">{{photoErrors['urlPhoto']}}</p>
     </div>
-    <button class="mt-2 btn btn-primary">Ajouter</button>
+    <button [disabled]="colleagueForm.invalid" (click)="ajouter()" class="mt-2 btn btn-primary">Ajouter</button>
 </form>
