@@ -1,9 +1,10 @@
 <h2 class="m-3">Formulaire</h2>
-<form tcFirstLastValidator #formCtrl="ngForm" class="m-3 w-50">
+<form tcFirstLastValidator tcPseudoValidator (ngSubmit)="reset(formCtrl)" #formCtrl="ngForm" class="m-3 w-50">
     <div class="form-group">
         <label for="pseudo">Pseudo</label>
         <input name="pseudo" required #pseudoCtrl="ngModel" [(ngModel)]="createColleague.pseudo" type="text" class="form-control" id="pseudo">
         <p class="m-0 p-1 text-danger" *ngIf="pseudoCtrl.dirty && pseudoCtrl.invalid">Pseudo invalide</p>
+        <p class="m-0 p-1 text-danger" *ngIf="pseudoCtrl.dirty && formCtrl.errors && formCtrl.errors['pseudoExist']">{{formCtrl.errors['pseudoExist']}}</p>
     </div>
     <div class="form-group">
         <label for="nom">Nom</label>
