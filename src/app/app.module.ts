@@ -8,6 +8,7 @@ import { WelcomeModule } from './pages/welcome/welcome.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateColleagueModule } from './pages/create-colleague/create-colleague.module';
 import { CreateColleagueReactiveModule } from './pages/create-colleague-reactive/create-colleague-reactive.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CreateColleagueReactiveModule } from './pages/create-colleague-reactive
     WelcomeModule,
     HttpClientModule,
     CreateColleagueModule,
-    CreateColleagueReactiveModule
+    CreateColleagueReactiveModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LikeHateComponent } from '../shared/components/like-hate/like-hate.component';
@@ -12,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FirstLastValidatorDirective } from './validators/first-last-validator.directive';
 import { PseudoValidatorDirective } from './validators/pseudo-validator.directive';
 import { CreateColleagueReactiveFormsComponent } from './components/create-colleague-reactive-forms/create-colleague-reactive-forms.component';
+import { MenuComponent } from '../shared/components/menu/menu.component';
 
 
 
@@ -26,20 +28,23 @@ import { CreateColleagueReactiveFormsComponent } from './components/create-colle
     CreateColleagueFormsComponent,
     FirstLastValidatorDirective,
     PseudoValidatorDirective,
-    CreateColleagueReactiveFormsComponent
+    CreateColleagueReactiveFormsComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,
     NgxPaginationModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [
     ColleagueListComponent,
     VotingHistoryComponent,
     CounterComponent,
     CreateColleagueFormsComponent,
-    CreateColleagueReactiveFormsComponent
+    CreateColleagueReactiveFormsComponent,
+    MenuComponent
   ]
 })
 export class SharedModule { }
