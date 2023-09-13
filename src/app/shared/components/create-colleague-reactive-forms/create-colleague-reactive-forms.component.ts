@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, AsyncValidator, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable, catchError, map, of } from 'rxjs';
 import { ColleagueService } from 'src/app/providers/colleague.service';
 
@@ -14,7 +15,7 @@ export class CreateColleagueReactiveFormsComponent implements AsyncValidator{
 
   created : boolean = false;
 
-  constructor(private colleagueService : ColleagueService , private fb: FormBuilder){
+  constructor(private router: Router, private colleagueService : ColleagueService , private fb: FormBuilder){
     this.colleagueForm = this.fb.group({
       pseudo: [
         '',
@@ -113,6 +114,9 @@ export class CreateColleagueReactiveFormsComponent implements AsyncValidator{
 
   showHideMsg(){
     this.created = true;
-    setTimeout(()=> {this.created=false},3000);
+    setTimeout(()=> {
+      this.created=false;
+      this.router.navigateByUrl("/colleagues");
+    },3000);
   }
 }

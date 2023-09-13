@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CreateColleague } from 'src/app/models/create-colleague';
 import { ColleagueService } from 'src/app/providers/colleague.service';
 
@@ -10,7 +11,7 @@ import { ColleagueService } from 'src/app/providers/colleague.service';
 })
 export class CreateColleagueFormsComponent {
 
-  constructor(private colleagueService : ColleagueService){}
+  constructor(private router: Router, private colleagueService : ColleagueService){}
 
   created : boolean = false;
 
@@ -34,7 +35,10 @@ export class CreateColleagueFormsComponent {
 
   showHideMsg(){
     this.created = true;
-    setTimeout(()=> {this.created=false},3000);
+    setTimeout(()=> {
+      this.created=false;
+      this.router.navigateByUrl("/colleagues");
+    },3000);
   }
 
 }

@@ -1,5 +1,8 @@
 <h2 class="m-3">Formulaire de création de collègue</h2>
-<p *ngIf="created" role="alert" class="alert alert-success m-3 w-50">Collègue créé avec succès</p>
+<p *ngIf="created" role="alert" class="alert alert-success m-3 w-50">
+  Le collègue a été créé avec succès.<br />
+  Vous allez être redirigés automatiquement vers la page d'accueil.
+</p>
 <form [formGroup]="colleagueForm" class="m-3 w-50">
     <div class="form-group">
         <label for="pseudo">Pseudo</label>
