@@ -5,6 +5,7 @@ import { Vote } from 'src/app/models/vote';
 import { LikeHate } from 'src/app/models/like-hate';
 import { CounterService } from 'src/app/providers/counter.service';
 import { VoteService } from 'src/app/providers/vote.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'tc-colleague',
@@ -13,7 +14,7 @@ import { VoteService } from 'src/app/providers/vote.service';
 })
 export class ColleagueComponent {
 
-  constructor(private counterService : CounterService, private voteService : VoteService){}
+  constructor(private router: Router, private voteService : VoteService){}
 
   @Input() colleague! : Colleague;
 
@@ -21,11 +22,15 @@ export class ColleagueComponent {
     let tempLikeHate : string;
     if(val===LikeHate.LIKE)
       tempLikeHate = "LIKE";
-    else 
+    else
       tempLikeHate = "HATE";
     this.voteService.sendVoteToAPI({pseudo : this.colleague.pseudo, like_hate : tempLikeHate})
       .subscribe({
         next: (value : any) => this.colleague.score = value.score
     })
+  }
+
+  detail(){
+    this.router.navigateByUrl("/colleagues/"+this.colleague.pseudo)
   }
 }

@@ -4,12 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { WelcomePage } from './pages/welcome/welcome.page';
 import { CreateColleagueFormsComponent } from './shared/components/create-colleague-forms/create-colleague-forms.component';
 import { CreateColleagueReactiveFormsComponent } from './shared/components/create-colleague-reactive-forms/create-colleague-reactive-forms.component';
+import { DetailPage } from './pages/detail/detail.page';
 
 
 const routes: Routes = [
   { path: 'colleagues', component: WelcomePage},
   { path: 'form-template', component: CreateColleagueFormsComponent},
   { path: 'form-reactive', component: CreateColleagueReactiveFormsComponent},
+  { path: 'colleagues/:pseudo', component: DetailPage},
   { path: '', pathMatch: 'full', redirectTo: '/colleagues'},
   { path: '**', component: WelcomePage},
 ];

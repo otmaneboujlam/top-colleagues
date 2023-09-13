@@ -11,7 +11,7 @@ import { VoteService } from 'src/app/providers/vote.service';
   templateUrl: './voting-history.component.html',
   styleUrls: ['./voting-history.component.scss']
 })
-export class VotingHistoryComponent implements OnDestroy{
+export class VotingHistoryComponent {
 
   constructor(private voteService : VoteService, private counterService : CounterService){}
 
@@ -31,7 +31,7 @@ export class VotingHistoryComponent implements OnDestroy{
             let tempLikeHate : LikeHate;
             if(vote.like_hate === "LIKE"){
               tempLikeHate = LikeHate.LIKE;
-            } 
+            }
             else{
               tempLikeHate = LikeHate.HATE;
             }
@@ -47,7 +47,7 @@ export class VotingHistoryComponent implements OnDestroy{
         let tempLikeHate : LikeHate;
         if(vote.like_hate === "LIKE"){
           tempLikeHate = LikeHate.LIKE;
-        } 
+        }
         else{
           tempLikeHate = LikeHate.HATE;
         }
@@ -64,7 +64,7 @@ export class VotingHistoryComponent implements OnDestroy{
     }
   }
 
-  ngOnDestroy(){
-    this.subscription.unsubscribe()
-  }
+  //ngOnDestroy(){
+  //  this.subscription.unsubscribe()
+  //}
 }

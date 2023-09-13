@@ -44,7 +44,8 @@ import { MenuComponent } from '../shared/components/menu/menu.component';
     CounterComponent,
     CreateColleagueFormsComponent,
     CreateColleagueReactiveFormsComponent,
-    MenuComponent
+    MenuComponent,
+    ScorePipe
   ]
 })
 export class SharedModule { }

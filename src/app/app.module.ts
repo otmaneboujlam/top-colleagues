@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreateColleagueModule } from './pages/create-colleague/create-colleague.module';
 import { CreateColleagueReactiveModule } from './pages/create-colleague-reactive/create-colleague-reactive.module';
 import { AppRoutingModule } from './app-routing.module';
+import { DetailModule } from './pages/detail/detail.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     CreateColleagueModule,
     CreateColleagueReactiveModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DetailModule
   ],
   providers: [],
   bootstrap: [AppComponent]
