@@ -17,8 +17,8 @@ export class AuthService {
     })
   }
 
-  //isLoggedIn = () => {
-  //  return this.http.get<any>("https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2/current_user");
-  //}
+  currentUser = () => {
+    return this.http.get<any>("https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2/current_user");
+  }
 
 }

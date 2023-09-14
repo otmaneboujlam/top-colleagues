@@ -1,7 +1,7 @@
-<header>
-  <tc-menu></tc-menu>
+<header *ngIf="isLogged">
+  <tc-menu [isLogged]="isLogged"></tc-menu>
+  <tc-counter></tc-counter>
 </header>
 <main>
-  <tc-counter></tc-counter>
   <router-outlet></router-outlet>
 </main>
