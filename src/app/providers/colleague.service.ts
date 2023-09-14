@@ -13,15 +13,15 @@ export class ColleagueService {
   colleagues : Colleague[] = []
 
   getColleaguesFromAPI = () => {
-    return this.http.get<Colleague[]>("https://app-6f6e9c23-7f63-4d86-975b-a0b1a1440f94.cleverapps.io/api/v2/colleagues");
+    return this.http.get<Colleague[]>("https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2/colleagues");
   }
 
   getColleagueDetail = (pseudo : string) => {
-    return this.http.get<any>("https://app-6f6e9c23-7f63-4d86-975b-a0b1a1440f94.cleverapps.io/api/v2/colleagues/"+pseudo);
+    return this.http.get<any>("https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2/colleagues/"+pseudo);
   }
 
   createColleague = (newColleague : CreateColleague)=> {
-    return this.http.post<CreateColleague>("https://app-6f6e9c23-7f63-4d86-975b-a0b1a1440f94.cleverapps.io/api/v2/colleagues", newColleague,{
+    return this.http.post<CreateColleague>("https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2/colleagues", newColleague,{
       headers: new HttpHeaders({
       "Content-Type": "application/json"
       })
