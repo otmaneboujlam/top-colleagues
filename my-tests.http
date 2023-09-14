@@ -1,0 +1,18 @@
+### Authentification
+POST https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2/login
+Content-Type: application/json
+
+{
+  "pseudo": "val02",
+  "password": "pass"
+}
+
+#### Utilisateur courant
+GET https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2/current_user
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJ2YWwwMiIsIm5iZiI6MTY5NDY4NjIxOSwiZXhwIjoxNjk0NzcyNjE5LCJhdXRob3JpdGllcyI6InVzZXIifQ.NRI5HYZGhYMTosq6ls6SXjg1AMCvKedIt1kQUHi5WnHidsNNrNDQJZlrTHF96pE2totSCqgYsKwy-s8okdBT72EHcAnFYqAZhNQzUq6bKpODuVCigwWaym_BpHPyOtuKcx9Z5E9GpdcRuwxuC9pTmd1OrKqn4eVQjzEFyejsrELArP0AuwS85uDTCWg0ekS88yeQrloyjZbnpH7AlrBsvAGCZ1Cq8yPjECily8fTb767FmJsyV0_MgpLcqb4OHpId5PxDqzJPLkc87VAM-j786BupsHWG2hIpWvAwAeSwRkIVsOtzgUm8KyzmntmVhlX1u43s4suDZTdVgeIUNKG2g
+
+### Liste collègues
+GET https://app-005f27d8-9033-48cc-ba69-b798464dee52.cleverapps.io/api/v2/colleagues
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJ2YWwwMiIsIm5iZiI6MTY5NDY4NjIxOSwiZXhwIjoxNjk0NzcyNjE5LCJhdXRob3JpdGllcyI6InVzZXIifQ.NRI5HYZGhYMTosq6ls6SXjg1AMCvKedIt1kQUHi5WnHidsNNrNDQJZlrTHF96pE2totSCqgYsKwy-s8okdBT72EHcAnFYqAZhNQzUq6bKpODuVCigwWaym_BpHPyOtuKcx9Z5E9GpdcRuwxuC9pTmd1OrKqn4eVQjzEFyejsrELArP0AuwS85uDTCWg0ekS88yeQrloyjZbnpH7AlrBsvAGCZ1Cq8yPjECily8fTb767FmJsyV0_MgpLcqb4OHpId5PxDqzJPLkc87VAM-j786BupsHWG2hIpWvAwAeSwRkIVsOtzgUm8KyzmntmVhlX1u43s4suDZTdVgeIUNKG2g
+
+

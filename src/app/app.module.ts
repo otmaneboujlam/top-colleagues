@@ -10,6 +10,7 @@ import { CreateColleagueModule } from './pages/create-colleague/create-colleague
 import { CreateColleagueReactiveModule } from './pages/create-colleague-reactive/create-colleague-reactive.module';
 import { AppRoutingModule } from './app-routing.module';
 import { DetailModule } from './pages/detail/detail.module';
+import { LoginModule } from './pages/login/login.module';
 
 @NgModule({
   declarations: [
