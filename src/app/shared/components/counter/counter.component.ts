@@ -8,8 +8,8 @@ import { CounterService } from 'src/app/providers/counter.service';
   templateUrl: './counter.component.html',
   styleUrls: ['./counter.component.scss']
 })
-export class CounterComponent implements OnInit, OnDestroy {
-  
+export class CounterComponent implements OnInit {
+
   like : LikeHate[] = [];
   hate : LikeHate[] = [];
 
@@ -25,12 +25,9 @@ export class CounterComponent implements OnInit, OnDestroy {
       }
       else {
         this.hate.push(l)
-      }  
+      }
       }
     })
   }
 
-  ngOnDestroy(){
-    this.subscription.unsubscribe()
-  }
 }
