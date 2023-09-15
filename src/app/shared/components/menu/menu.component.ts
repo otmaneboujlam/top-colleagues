@@ -32,6 +32,8 @@ export class MenuComponent {
   logOut = () => {
     localStorage.removeItem("TOKEN");
     this.isLoggedIn.publier(false);
+    this.first = "";
+    this.last = "";
     this.router.navigateByUrl("/login");
   }
 
