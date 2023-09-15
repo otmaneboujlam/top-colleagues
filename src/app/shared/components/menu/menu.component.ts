@@ -1,6 +1,7 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/providers/auth.service';
+import { IsLoggedInService } from 'src/app/providers/is-logged-in.service';
 
 @Component({
   selector: 'tc-menu',
@@ -9,7 +10,7 @@ import { AuthService } from 'src/app/providers/auth.service';
 })
 export class MenuComponent {
 
-  constructor(private authService : AuthService, private router : Router){}
+  constructor(private isLoggedIn : IsLoggedInService, private authService : AuthService, private router : Router){}
 
   first : string = "";
   last : string = "";
@@ -30,7 +31,8 @@ export class MenuComponent {
 
   logOut = () => {
     localStorage.removeItem("TOKEN");
-    location.reload();
+    this.isLoggedIn.publier(false);
+    this.router.navigateByUrl("/login");
   }
 
 }
